@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+  }
+  
+  .banner-container {
+    display: flex;
+    width: 400%;
+    animation: slide 12s infinite linear;
+  }
+  
+  .banner {
+    flex: 1;
+    height: 200px;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .banner img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .banner-1 {
+    background-color: #3498db;
+  }
+  
+  .banner-2 {
+    background-color: #e74c3c;
+  }
+  
+  .banner-3 {
+    background-color: #2ecc71;
+  }
+  
+  .banner-4 {
+    background-color: #f39c12;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-100%);
+    }
+    75% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journals and Vedic Maths Benefits</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333; /* Set background color to light black */
+            color: #fff;
+        }
+
+        header {
+            background-color: #3bb19b; /* Header color for journals page */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        section {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .journal-link {
+            display: block;
+            margin-bottom: 10px;
+            color: #3bb19b; /* Journal link color */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .journal-link:hover {
+            text-decoration: underline;
+        }
+
+        #thought-banner-container {
+            background-color: #3498db; /* Set the background color for the colorful box */
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px; /* Add rounded corners for the colorful box */
+            text-align: center;
+            animation: colorChange 5s infinite alternate; /* Color animation */
+        }
+
+        @keyframes colorChange {
+            from {
+                background-color: #3498db;
+            }
+            to {
+                background-color: #2ecc71;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vedic Maths Benefits</h1>
+        <p>Unlock the Power of Vedic Maths for Student Success</p>
+    </header>
+
+    <section id="thought-banner-container">
+        <h2>Thought Banners</h2>
+        <div id="thought-banner">
+            <!-- JavaScript will dynamically update this content -->
+        </div>
+    </section>
+
+    <section>
+        <h2>Explore Journals</h2>
+        <a class="journal-link" href="your_journal1_link.pdf" target="_blank">Journal 1: Title</a>
+        <a class="journal-link" href="your_journal2_link.pdf" target="_blank">Journal 2: Title</a>
+        <a class="journal-link" href="your_journal3_link.pdf" target="_blank">Journal 3: Title</a>
+        <!-- Add more journal links as needed -->
+
+        <p>Feel free to explore the latest research in our journals!</p>
+    </section>
+
+    <script>
+        // Add your thoughts related to the benefits of learning Vedic Maths
+        const thoughts = [
+            "Enhance problem-solving skills with Vedic Maths techniques.",
+            "Improve mental calculation speed and accuracy.",
+            "Boost confidence in mathematics through innovative methods.",
+            "Develop a deeper understanding of mathematical concepts.",
+            "Make math learning enjoyable and interesting for students."
+            // Add more thoughts as needed
+        ];
+
+        // Function to display thoughts in a banner
+        function displayThought() {
+            const thoughtBanner = document.getElementById('thought-banner');
+            const randomThought = thoughts[Math.floor(Math.random() * thoughts.length)];
+            thoughtBanner.textContent = randomThought;
+        }
+
+        // Initial display of thought and then update every 10 seconds
+        displayThought();
+        setInterval(displayThought, 10000);
+    </script>
+</body>
+</html>

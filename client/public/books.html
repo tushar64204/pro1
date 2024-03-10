@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books and Vedic Maths Benefits</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333; /* Set background color to light black */
+            color: #fff;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        section {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .book-link {
+            display: block;
+            margin-bottom: 10px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .book-link:hover {
+            text-decoration: underline;
+        }
+
+        #thought-banner-container {
+            background-color: #2ecc71; /* Set the background color for the colorful box */
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px; /* Add rounded corners for the colorful box */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vedic Maths Benefits</h1>
+        <p>Unlock the Power of Vedic Maths for Student Success</p>
+    </header>
+
+    <section>
+        <h2>Download My Books</h2>
+        <a class="book-link" href="your_book1_link.pdf" target="_blank">Book 1: Title</a>
+        <a class="book-link" href="your_book2_link.pdf" target="_blank">Book 2: Title</a>
+        <a class="book-link" href="your_book3_link.pdf" target="_blank">Book 3: Title</a>
+        <!-- Add more book links as needed -->
+
+        <p>Feel free to download and explore the content of each book!</p>
+    </section>
+
+    <section id="thought-banner-container">
+        <h2>Thought Banners</h2>
+        <div id="thought-banner">
+            <!-- JavaScript will dynamically update this content -->
+        </div>
+    </section>
+
+    <script>
+        // Add your thoughts related to the benefits of learning Vedic Maths
+        const thoughts = [
+            "Enhance problem-solving skills with Vedic Maths techniques.",
+            "Improve mental calculation speed and accuracy.",
+            "Boost confidence in mathematics through innovative methods.",
+            "Develop a deeper understanding of mathematical concepts.",
+            "Make math learning enjoyable and interesting for students."
+            // Add more thoughts as needed
+        ];
+
+        // Function to display thoughts in a banner
+        function displayThought() {
+            const thoughtBanner = document.getElementById('thought-banner');
+            const randomThought = thoughts[Math.floor(Math.random() * thoughts.length)];
+            thoughtBanner.textContent = randomThought;
+        }
+
+        // Initial display of thought and then update every 10 seconds
+        displayThought();
+        setInterval(displayThought, 10000);
+    </script>
+</body>
+</html>
