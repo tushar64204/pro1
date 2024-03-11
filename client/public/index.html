@@ -37,7 +37,7 @@
       <link rel="shortcut icon" href="./assets/images/NUMERICVEDAPNG.png" type="image/svg+xml">
 
       <!-- contact link -->
-      <link rel="stylesheet" href="styles.css">
+      <link rel="stylesheet" href="./assets/css/style.css">
 
     
       <!-- 
@@ -46,6 +46,7 @@
       <link rel="stylesheet" href="./assets/css/style.css">
 
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      
     
       <!-- 
         - google font link
@@ -448,9 +449,8 @@ body {
     
             </div>
           </section>
-    
-    
-    
+  
+  
     
           <!-- 
             - #CATEGORY
@@ -565,9 +565,202 @@ body {
             </div>
           </section>
     
-    
-    
-    
+    <!-- quiz -->
+    <div class="quizbody">
+      <h2>Let us help you to select the perfect course for you</h2>
+      <div id="quiz-container">
+          <div id="timer">Time Left: <span id="time">30</span> seconds</div>
+          <div id="question-container" class="question"></div>
+          <div id="options-container" class="options"></div>
+          <button id="submit-btn" onclick="submitQuiz()" style="display: none;">Submit</button>
+          <button id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question</button>
+      </div>
+
+      <div id="result-container" style="display: none;">
+          <h2>Quiz Result</h2>
+          <p id="result"></p>
+          <button onclick="navigateToResultPage()">View Detailed Results</button>
+      </div>
+
+      <script>
+          const quizData = [
+          {
+    question: "What is the result of multiplying 9 by 0?",
+    options: ["a) 0", "b) 9", "c) 18", "d) 81"],
+    correctAnswer: 0,
+    score: 4.545454545454546,
+  },
+  {
+    question: "What is the product of 11 and 12?",
+    options: ["a) 122", "b) 132", "c) 142", "d) 152"],
+    correctAnswer: 1,
+    score: 4.545454545454546,
+  },
+  {
+    question: "If 35 is divided by 7, what is the quotient?",
+    options: ["a) 4", "b) 5", "c) 6", "d) 7"],
+    correctAnswer: 1,
+    score: 9.090909090909092,
+  },
+  {
+    question: "What is the square of 23?",
+    options: ["a) 413", "b) 483", "c) 529", "d) 576"],
+    correctAnswer: 2,
+    score: 9.090909090909092,
+  },
+  {
+    question: "If a number is increased by 20% and then decreased by 20%, what is the net change?",
+    options: ["a) 0%", "b) 2%", "c) 4%", "d) 8%"],
+    correctAnswer: 0,
+    score: 9.090909090909092,
+  },
+  {
+    question: "Solve: (45 * 45) + (45 * 55)",
+    options: ["a) 4500", "b) 4950", "c) 5000", "d) 5500"],
+    correctAnswer: 3,
+    score: 9.090909090909092,
+  },
+  {
+    question: "In the Bhagavad Gita, Lord Krishna mentions a concept that can be related to finding the least common multiple (LCM) in modern mathematics. What is this concept?",
+    options: ["a) Karma Yoga", "b) Dharma", "c) Yajna", "d) Yuga"],
+    correctAnswer: 3,
+    score: 13.636363636363637,
+  },
+  {
+    question: "The ancient Indian mathematician Brahmagupta introduced a rule that can be related to solving quadratic equations. What is this rule called?",
+    options: ["a) Sutra Siddhanta", "b) Brahmasphutasiddhanta", "c) Bijaganita", "d) Shulba Sutras"],
+    correctAnswer: 2,
+    score: 13.636363636363637,
+  },
+  {
+    question: "The Vedic math technique called 'Nikhilam Navatashcaramam Dashatah' is equivalent to which modern mathematical operation?",
+    options: ["a) Division", "b) Multiplication", "c) Square Root", "d) Addition"],
+    correctAnswer: 1,
+    score: 13.636363636363637,
+  },
+  {
+    question: "In the Rigveda, there is a reference to a numerical pattern similar to the Fibonacci sequence. What is this pattern known as in Vedic math?",
+    options: ["a) Pratyayasankhya", "b) Amshasankhya", "c) Shunyasankhya", "d) Padavinyasa"],
+    correctAnswer: 1,
+    score: 13.636363636363637,
+  },
+              {
+                  question: "whold you like to rate this quiz between  1 and 5?",
+                  options: ["1", "2", "3", "4"  , "5"],
+                  correctAnswer: 3,
+                  score: 0,
+              }
+          ];
+
+          let currentQuestion = 0;
+          let timeLeft = 100;
+          let timerInterval;
+          let totalScore = 0;
+          let quizSubmitted = false;
+
+          function startTimer() {
+              timerInterval = setInterval(function () {
+                  document.getElementById('time').textContent = timeLeft;
+                  timeLeft--;
+
+                  if (timeLeft < 0) {
+                      clearInterval(timerInterval);
+                      submitQuiz();
+                  }
+              }, 1000);
+          }
+
+          function displayQuestion() {
+              const questionContainer = document.getElementById('question-container');
+              const optionsContainer = document.getElementById('options-container');
+              const currentQuizData = quizData[currentQuestion];
+
+              questionContainer.textContent = currentQuizData.question;
+              optionsContainer.innerHTML = '';
+
+              currentQuizData.options.forEach((option, index) => {
+                  const optionElement = document.createElement('div');
+                  optionElement.className = 'option';
+                  optionElement.textContent = option;
+                  optionElement.setAttribute('data-index', index);
+                  optionElement.addEventListener('click', () => selectOption(index));
+                  optionsContainer.appendChild(optionElement);
+              });
+
+              document.getElementById('submit-btn').style.display = 'none';
+              document.getElementById('next-btn').style.display = 'none';
+          }
+
+          function selectOption(selectedIndex) {
+              if (!quizSubmitted) {
+                  const userAnswerIndex = selectedIndex.toString();
+                  const isCorrect = userAnswerIndex === quizData[currentQuestion].correctAnswer.toString();
+                  totalScore += isCorrect ? quizData[currentQuestion].score : 0;
+
+                  const options = document.querySelectorAll('.option');
+                  options.forEach(option => option.classList.remove('selected'));
+                  options[selectedIndex].classList.add('selected');
+
+                  document.getElementById('next-btn').style.display = 'block';
+              }
+          }
+
+          function submitQuiz() {
+    clearInterval(timerInterval);
+    quizSubmitted = true;
+
+    const selectedOptions = document.querySelectorAll('.option.selected');
+let isCorrect = false;
+
+selectedOptions.forEach((selectedOption) => {
+    const userAnswerIndex = selectedOption.getAttribute('data-index');
+    isCorrect = userAnswerIndex === quizData[currentQuestion].correctAnswer.toString();
+    totalScore += isCorrect ? quizData[currentQuestion].score : 0;
+});
+
+// Ensure that if there are no selected options, the score doesn't get incremented
+if (selectedOptions.length === 0) {
+    totalScore += 0;
+}
+
+
+    if (currentQuestion === quizData.length - 1) {
+        // Cap the total score at 100
+        totalScore = Math.min(totalScore, 100);
+        document.getElementById('result').textContent = `Your score: ${totalScore} / ${"100"}`;
+        document.getElementById('result-container').style.display = 'block';
+        document.getElementById('next-btn').style.display = 'none';
+        document.getElementById('submit-btn').style.display = 'none';
+    } else {
+        document.getElementById('next-btn').style.display = 'block';
+        document.getElementById('submit-btn').style.display = 'none';
+        quizSubmitted = false;
+    }
+}
+
+
+          function nextQuestion() {
+              if (currentQuestion < quizData.length - 1) {
+                  currentQuestion++;
+                  timeLeft = 30;
+                  startTimer();
+                  displayQuestion();
+                  document.getElementById('next-btn').style.display = 'none';
+              } else {
+                  document.getElementById('submit-btn').style.display = 'block';
+                  document.getElementById('next-btn').style.display = 'none';
+              }
+          }
+
+          function navigateToResultPage() {
+            window.location.href = './result.html';
+              alert('remember your score');
+          }
+
+          startTimer();
+          displayQuestion();
+      </script>
+  </div>
     
           <!-- 
             - #ABOUT
