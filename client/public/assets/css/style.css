@@ -935,7 +935,7 @@ body {
       }
     
       #quiz-container {
-        background-color: #fff;
+        background-color: #223c4d;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -946,10 +946,12 @@ body {
     
       .question {
         margin-bottom: 20px;
+        color: white;
       }
     
       .options {
         margin-top: 10px;
+        color: #ddd ;
       }
     
       .option {
@@ -973,7 +975,7 @@ body {
       #timer {
         font-size: 20px;
         margin-bottom: 10px;
-        color: #333;
+        color: #ff8181;
       }
     
       #submit-btn {
@@ -989,6 +991,7 @@ body {
       #result-container {
         display: none;
         margin-top: 20px;
+        z-index: 20;
       }
   
 
@@ -1178,8 +1181,8 @@ body {
   .hero-shape-1 {
     display: block;
     position: absolute;
-    bottom: -200px;
-    left: -200px;
+    bottom: -220px;
+    left: -100px;
     z-index: -5;
   }
 
@@ -1477,15 +1480,38 @@ button {
 button:hover {
   background-color: #45a049;
 }
-
-.form-image {
-  flex: 1;
-  margin-left: 20px;
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
 }
 
-.form-image img {
-  width: 100%;
-  border-radius: 8px;
+/* Media query for screens smaller than 768px (adjust the value as needed) */
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column; /* Change to a column layout for smaller screens */
+    align-items: center; /* Center-align items in column layout */
+  }
+
+}
+.mySlides {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Media query for screens smaller than 768px (adjust the value as needed) */
+@media (max-width: 768px) {
+  .mySlides {
+    width: 30%;
+  }
+
 }
 
 .menu-container {
@@ -1583,4 +1609,29 @@ button:hover {
   bottom: 20px;
   right: 20px;
   z-index: 10;
+}
+.about-shape-2 {
+  width: 70%;
+  height: auto;
+}
+
+/* Media query for screens smaller than 768px (adjust the value as needed) */
+@media (max-width: 768px) {
+  .about-shape-2{
+    width: 90%; /* Adjust the width for smaller screens */
+  }
+}
+.formform {
+  width: 100%;
+  height: auto;
+}
+
+/* Media query for screens smaller than 768px (adjust the value as needed) */
+@media (max-width: 768px) {
+  .formform {
+   display: none; /* Adjust the width for smaller screens */
+  }
+}
+.booking {
+color: #223c4d;
 }

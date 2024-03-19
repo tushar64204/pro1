@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 // import logo from "./assets/logo.png"; // Adjust the path based on your project structure
 
@@ -14,9 +14,9 @@ const Data = () => {
 		email: "",
 		WhatsAppNumber: "",
     UserType:  "" ,
-    SelectedDay: ""
+    Selectedday: ""
 	});
-	const [error, setError] = useState("");
+	const [ setError] = useState("");
 	console.log(data);
 	const navigate = useNavigate();
 
@@ -136,9 +136,9 @@ const Data = () => {
               <option value="govt-exam-aspirant">Govt. Exam Aspirant</option>
             </select>
             <select
-  name="SelectedDay"
+  name="Selectedday"
   onChange={handleChange}
-  value={data.SelectedDay}
+  value={data.Selectedday}
   required
   className={styles.input}
 >

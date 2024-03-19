@@ -1,4 +1,3 @@
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,39 +17,44 @@
         <div class="contact-info">
           <h3 class="title">Let's get in touch</h3>
           <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            dolorum adipisci recusandae praesentium dicta!
+            Empower students to progress from basic to
+            advanced mathematical concepts. Our
+            comprehensive learning program is designed
+            to provide a structured and gradual learning
+            experience, ensuring that students build a strong
+            foundation before tackling more advanced topics.
           </p>
 
           <div class="info">
             <div class="information">
               <i class="fas fa-map-marker-alt"></i> &nbsp &nbsp
-
-              <p>92 Cherry Drive Uniondale, NY 11553</p>
+              <p>Rohtak, Haryana</p>
             </div>
             <div class="information">
-              <i class="fas fa-envelope"></i> &nbsp &nbsp
-             
+              <i class="fas fa-envelope"></i> 
+              <p>Email: rakeshbhatia106@gmail.com</p>
             </div>
             <div class="information">
-              <i class="fas fa-phone"></i>&nbsp&nbsp
-              <p>123-456-789</p>
+              <i class="fas fa-phone"></i>
+              <p>
+                Mobile: +91-9466235578
+              </p>
             </div>
           </div>
 
           <div class="social-media">
             <p>Connect with us :</p>
             <div class="social-icons">
-              <a href="#">
+              <a href="https://www.facebook.com/rakesh.bhatia.505/">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="#">
+              <a href="https://x.com/RakeshB59785148?t=nUjc0Ob84nGTFFEUnPZG-w&s=09">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a href="#">
+              <a href="https://www.instagram.com/vedic_maths_solution/">
                 <i class="fab fa-instagram"></i>
               </a>
-              <a href="#">
+              <a href="https://www.linkedin.com/in/dr-rakesh-bhatia-793505245/">
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
@@ -60,35 +64,62 @@
         <div class="contact-form">
           <span class="circle one"></span>
           <span class="circle two"></span>
+          <div className="form-container">
+            <h2>Have a question or need _assistance!</h2>
+            <form id="contactForm">
+              <label for="email">Your Email:</label><br>
+              <input type="email" id="email" name="email" class="input" required /><br><br>
 
-          <form action="index.html" autocomplete="off">
-            <h3 class="title">Contact us</h3>
-            <div class="input-container">
-              <input type="text" name="name" class="input" />
-              <label for="">Username</label>
-              <span>Username</span>
+              <label for="message">Your Message:</label><br>
+              <textarea id="message" name="message" rows="8" class="input" required></textarea><br><br>
+
+              <button type="submit" class="btn">Send</button>
+            </form>
+
+            <div id="thankYouMessage" style="display: none;">
+              <p>Thank you for your message! We will get back to you soon.</p>
             </div>
-            <div class="input-container">
-              <input type="email" name="email" class="input" />
-              <label for="">Email</label>
-              <span>Email</span>
-            </div>
-            <div class="input-container">
-              <input type="tel" name="phone" class="input" />
-              <label for="">Phone</label>
-              <span>Phone</span>
-            </div>
-            <div class="input-container textarea">
-              <textarea name="message" class="input"></textarea>
-              <label for="">Message</label>
-              <span>Message</span>
-            </div>
-            <input type="submit" value="Send" class="btn" />
-          </form>
+          </div>
         </div>
       </div>
     </div>
 
-    <script src="app.js"></script>
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Construct the data object from form fields
+        const formData = {
+          email: document.getElementById('email').value,
+          message: document.getElementById('message').value
+        };
+
+        // Send a POST request using Fetch API
+        fetch('http://localhost:1221/api/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Success:', data);
+          // Display thank you message
+          document.getElementById('thankYouMessage').style.display = 'block';
+          // Optionally, reset the form fields
+          document.getElementById('contactForm').reset();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Optionally, handle error response
+        });
+      });
+    </script>
   </body>
 </html>

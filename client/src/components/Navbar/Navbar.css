@@ -70,11 +70,12 @@ a {
   }
   .nav__menu {
     position: fixed;
+    z-index: 11;
     top: 7vh;
     right: 0;
-    height: 93vh;
-    width: 50vw;
-    background: rgb(0, 33, 65);
+    height: 70dvh;
+    width: 30vw;
+    background: rgba(2, 7, 12, 0.795);
     flex-direction: column;
     transform: translateX(100%);
     transition: 0.5s ease-in;
@@ -95,4 +96,16 @@ a {
 }
 .toggle .line3 {
   transform: rotate(45deg) translate(-4px, -5px);
+}
+
+.logo {
+  width: 6%;
+  height: auto;
+}
+
+/* Media query for screens smaller than 768px (adjust the value as needed) */
+@media (max-width: 768px) {
+  .logo {
+    width: 20%; /* Adjust the width for smaller screens */
+  }
 }

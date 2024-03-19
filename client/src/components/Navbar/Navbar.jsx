@@ -26,7 +26,8 @@ function Navbar() {
       <img
         src="./logo.png"
         alt="Company Logo"
-        style={{ width: '5%', height: 'auto' }}
+        className="logo"
+      
       />
         <a href="/" className="navybrand" onClick={() => handleNavigation("/")}>
           NumericVeda
@@ -38,8 +39,8 @@ function Navbar() {
             </a>
           </li>
           <li className="nav__item">
-            <a href="#" className="nav__link" onClick={() => handleNavigation("/about")}>
-              About
+            <a href="/message.html" target="_blank" className="nav__link" onClick={() => handleNavigation("/message.html")}>
+              messageUs
             </a>
           </li>
           <li className="nav__item">
@@ -49,7 +50,7 @@ function Navbar() {
           </li>
           
           <li className="nav__item">
-            <a href="/contact" className="nav__link" onClick={() => handleNavigation("/contact")}>
+            <a href="/contact" target="_blank" className="nav__link" onClick={() => handleNavigation("/contact")}>
               Contact
             </a>
           </li>
@@ -59,7 +60,7 @@ function Navbar() {
               className="nav__link"
               onClick={() => handleNavigation("/login")}
             >
-              Login
+              Login/Signup
             </a>
           </li>
         </ul>
